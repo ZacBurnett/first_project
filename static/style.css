@@ -1,0 +1,43 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 0.3rem;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#Prediction {background-color:green;}
+#data_viz {background-color:blue;}
+
+</style>
+</head>

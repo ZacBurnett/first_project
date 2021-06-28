@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+<html>
+<body>
+<div id="Prediction" class="tabcontent">
+  <h1>Stroke Prediction</h1>
+  <p>Predicts the chance a patient may have a stroke</p>
+</div>
+
+<div id="data_viz" class="tabcontent">
+  <h1>Data Visualization</h1>
+  <p>See the data imagery.</p>
+</div>
+
+<button class="tablink" id="prediction_btn">Prediction</button>
+<button id ="defaultOpen" class="tablink" onclick="openTab('data_viz', this, 'blue')">Data</button>
+<br /><br /><br /><br />
+
+{% for imageList in imageList %}
+<img src=" {{url_for('static', filename=imageList)}}">
+{% endfor %}
+
+
+
+
+
+
+
+<script>
+function openTab(tabName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(tabName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+<script type="text/javascript">
+    document.getElementById("prediction_btn").onclick = function() {
+        location.href = "/";
+        };
+</script>
+</body>
+</html>

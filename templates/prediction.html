@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+<html>
+<body>
+<div id="Prediction" class="tabcontent">
+  <h1>Stroke Prediction</h1>
+  <p>Predicts the chance a patient may have a stroke in the next 24 hours</p>
+</div>
+
+<button class="tablink" onclick="openTab('Prediction', this, 'green')" id="defaultOpen">Prediction</button>
+<button id ="data_vizbtn" class="tablink" onclick=>Data</button>
+
+<br /><br /> <br /><br />
+<h2 style="text-align:center">Patient:</h2>
+<table align="center">
+  <tr>
+    <th>Patient ID</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Hypertension</th>
+    <th>Heart Disease</th>
+    <th>Avg Glucose</th>
+    <th>BMI</th>
+    <th>Smoking Status</th>
+  </tr>
+  {% for each in patient %}
+  <tr>
+    <td style="text-align:center">{{each[0]}}</td>
+    <td style="text-align:center">{{each[1]}}</td>
+    <td style="text-align:center">{{each[2]}}</td>
+    <td style="text-align:center">{{each[3]}}</td>
+    <td style="text-align:center">{{each[4]}}</td>
+    <td style="text-align:center">{{each[8]}}</td>
+    <td style="text-align:center">{{each[9]}}</td>
+    <td style="text-align:center">{{each[10]}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<br /><br />
+<h3 style="text-align:center">Patient ID: {{ patient[0][0] }} has: </h3>
+<br />
+<h3 style="text-align:center">{{ proba[0][0] }}% chance of not having a stroke in the next 24 hours.</h3>
+<br />
+<h3 style="text-align:center">{{ proba[0][1] }}% chance of having a stroke in the next 24 hours.</h3>
+<br />
+<button style="text-align:center" id="backbtn">Go Back</button>
+
+
+
+
+
+
+
+<script>
+function openTab(tabName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(tabName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+<script type="text/javascript">
+    document.getElementById("backbtn").onclick = function() {
+        location.href = "/";
+        };
+</script>
+</body>
+</html>
